@@ -37,8 +37,7 @@ async def create_personal_client_controller(data: dict):
         "email",
         "born_date",
         "gender",
-        "weight",
-        "height",
+        "color_belt",
         "contact_number",
         "active",
     ]
