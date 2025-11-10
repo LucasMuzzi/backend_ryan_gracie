@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
 from models.personal import Personal, PersonalClients
+from models.check_in import CheckIn
 
 
 load_dotenv()
@@ -14,4 +15,4 @@ async def init_db():
     client = AsyncIOMotorClient(mongo_uri)
     db = client.get_default_database()
 
-    await init_beanie(database=db, document_models=[Personal, PersonalClients])
+    await init_beanie(database=db, document_models=[Personal, PersonalClients, CheckIn])

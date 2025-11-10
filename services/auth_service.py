@@ -24,7 +24,7 @@ async def login_service(data: dict):
     token = jwt.encode(payload_jwt, secret_key, algorithm=algorithm)
 
     return {
-        "ID": user.id,
+        "id": user.id,
         "full_name": user.full_name,
         "email": user.email,
         "token": token,
