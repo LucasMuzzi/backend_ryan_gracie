@@ -18,5 +18,3 @@ class PersonalClientSchema(BaseModel):
     color_belt: str
     contact_number: str
     active: Optional[bool] = False
-    created_at: Optional[datetime] = Field(default_factory=datetime.now)
-    updated_at: Optional[datetime] = Field(default_factory=datetime.now)
