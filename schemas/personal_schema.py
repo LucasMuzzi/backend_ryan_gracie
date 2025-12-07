@@ -18,3 +18,7 @@ class PersonalClientSchema(BaseModel):
     color_belt: str
     contact_number: str
     active: Optional[bool] = False
+    
+class PersonalClienteDelete(BaseModel):
+    personal_id: str
+    email: EmailStr

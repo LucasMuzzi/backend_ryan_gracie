@@ -43,6 +43,20 @@ async def create_personal_client_service(data: dict):
     }
 
 
+async def delete_personal_client_service(data: dict):
+    client = await PersonalClients.find_one(
+        PersonalClients.personal_id == data["personal_id"],
+        PersonalClients.email == data["email"]
+    )
+    print(client)
+    if client:
+        await client.delete()
+
+    return {
+        "message" : f"client successfully deleted."
+    }
+
+
 async def list_personal_clients_service(personal_id):
     clients = await PersonalClients.find(
         PersonalClients.personal_id == personal_id

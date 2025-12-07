@@ -3,6 +3,7 @@ from fastapi import HTTPException, status
 from services.personal_service import (
     create_personal_client_service,
     create_personal_service,
+    delete_personal_client_service,
     list_personal_clients_service,
 )
 
@@ -59,6 +60,31 @@ async def create_personal_client_controller(data: dict):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Unexpected error: {str(e)}",
         )
+
+
+async def delete_personal_client_controller(data: dict):
+    required_fields = [
+        "personal_id",
+        "email",
+    ]
+
+    for field in required_fields:
+        if not data.get(field):
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"Missing required values: {field}",
+            )
+
+    try:
+        result = await delete_personal_client_service(data)
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Unexpected error: {str(e)}",
+        )
+
+    return {"status_code": status.HTTP_201_CREATED, "details": result}
 
 
 async def list_personal_clients_controller(personal_id: str):
