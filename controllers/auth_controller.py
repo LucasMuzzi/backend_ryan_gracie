@@ -5,6 +5,7 @@ from services.auth_service import login_service
 
 async def login_controller(data: dict):
     required_fields = ["email", "password"]
+    print(data)
 
     for field in required_fields:
         if not data.get(field):

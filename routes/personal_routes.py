@@ -21,7 +21,7 @@ async def create_personal_client(data: PersonalClientSchema):
     return await create_personal_client_controller(data.model_dump())
 
 
-@personal_router.post("/delete-client", dependencies=[Depends(verify_jwt_token)])
+@personal_router.delete("/delete-client", dependencies=[Depends(verify_jwt_token)])
 async def delete_personal_client(data: PersonalClienteDelete):
     return await delete_personal_client_controller(data.model_dump())
 

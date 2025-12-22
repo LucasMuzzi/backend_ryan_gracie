@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from controllers.auth_controller import login_controller
-from schemas.login_schema import LoginSchema
+from schemas.auth_schema import LoginSchema
 
 auth_router = APIRouter(prefix="/auth", tags=["auth"])
 
